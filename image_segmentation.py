@@ -127,7 +127,6 @@ def unet_model(output_channels):
 
   return tf.keras.Model(inputs=inputs, outputs=x)
 
-#Train the model
 #The network here is outputting three channels.
 # Essentially, each channel is trying to learn to predict a class, and losses.SparseCategoricalCrossentropy(from_logits=True) is the recommended loss for such a scenario.
 # Using the output of the network, the label assigned to the pixel is the channel with the highest value.
@@ -163,6 +162,7 @@ class DisplayCallback(tf.keras.callbacks.Callback):
     show_predictions()
     print ('\nSample Prediction after epoch {}\n'.format(epoch+1))
 
+#Train the model
 EPOCHS = 20
 VAL_SUBSPLITS = 5
 VALIDATION_STEPS = info.splits['test'].num_examples//BATCH_SIZE//VAL_SUBSPLITS
